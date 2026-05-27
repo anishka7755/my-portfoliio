@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anishka Verma — Developer & Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --ink: #1A1410;
+    --rust: #C4592A;
+    --rust-light: #F0D5C8;
+    --rust-mid: #E8926B;
+    --sage: #3D5A47;
+    --muted: #7A6F65;
+    --border: rgba(26,20,16,0.12);
+    --card-bg: #FFFDF9;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(245,240,232,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--rust); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 4rem 4rem 4rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--rust);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: var(--rust);
+  }
+
+  h1.hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  h1.hero-name em {
+    font-style: italic;
+    color: var(--rust);
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 400px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 0.75rem 1.75rem;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.15s;
+    border-radius: 2px;
+  }
+
+  .btn-primary:hover { background: var(--rust); transform: translateY(-1px); }
+
+  .btn-outline {
+    display: inline-block;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    padding: 0.75rem 1.75rem;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all 0.2s;
+    border-radius: 2px;
+  }
+
+  .btn-outline:hover { background: var(--ink); color: var(--cream); transform: translateY(-1px); }
+
+  .hero-right {
+    background: var(--rust-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-graphic {
+    position: relative;
+    width: 320px;
+    height: 320px;
+  }
+
+  .hero-circle {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: var(--rust);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-initials {
+    font-family: 'DM Serif Display', serif;
+    font-size: 7rem;
+    color: var(--cream);
+    letter-spacing: -0.05em;
+    font-style: italic;
+    opacity: 0.85;
+    user-select: none;
+  }
+
+  .floating-tag {
+    position: absolute;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    font-family: 'DM Mono', monospace;
+    white-space: nowrap;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .ft-1 { top: 10%; right: -20px; animation-delay: 0s; }
+  .ft-2 { bottom: 20%; left: -30px; animation-delay: 1.5s; }
+  .ft-3 { top: 60%; right: -10px; animation-delay: 3s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 2;
+  }
+
+  .hero-scroll::after {
+    content: '';
+    width: 1px;
+    height: 3rem;
+    background: var(--muted);
+    animation: scrollLine 1.5s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.3); }
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 5rem 4rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--rust);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-text {
+    color: var(--muted);
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.85;
+    margin-bottom: 1rem;
+  }
+
+  .info-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    border-radius: 4px;
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.875rem;
+  }
+
+  .info-row:last-child { border-bottom: none; }
+  .info-label { color: var(--muted); font-weight: 400; }
+  .info-value { font-weight: 500; color: var(--ink); text-align: right; }
+
+  /* ── SKILLS ── */
+  .skills-section { background: var(--ink); }
+
+  .skills-section .section-label { color: var(--rust-mid); }
+  .skills-section .section-label::after { background: rgba(255,255,255,0.1); }
+
+  .skills-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--cream);
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+    line-height: 1.15;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .skill-cell {
+    background: rgba(255,255,255,0.03);
+    padding: 1.5rem;
+    transition: background 0.2s;
+  }
+
+  .skill-cell:hover { background: rgba(196,89,42,0.15); }
+
+  .skill-category {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--rust-mid);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .skill-tag {
+    background: rgba(255,255,255,0.07);
+    color: rgba(245,240,232,0.8);
+    font-size: 0.8rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+    font-weight: 300;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    border-radius: 4px;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--rust);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(26,20,16,0.08);
+    border-color: rgba(196,89,42,0.3);
+  }
+
+  .project-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.25rem;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+
+  .project-role {
+    font-size: 0.75rem;
+    color: var(--rust);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+  }
+
+  .project-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .tech-tag {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--rust);
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    transition: gap 0.2s;
+  }
+
+  .project-link:hover { gap: 0.7rem; }
+
+  .project-links-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .project-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--cream);
+    transition: all 0.2s;
+  }
+
+  .project-link-btn:hover {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+    transform: translateY(-1px);
+  }
+
+  .project-link-btn.live {
+    background: var(--rust);
+    color: var(--cream);
+    border-color: var(--rust);
+  }
+
+  .project-link-btn.live:hover {
+    background: #a3481f;
+    border-color: #a3481f;
+  }
+
+  .project-badge {
+    display: inline-block;
+    background: var(--rust-light);
+    color: var(--rust);
+    font-size: 0.68rem;
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.55rem;
+    border-radius: 2px;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+  }
+
+  .project-feature-list {
+    list-style: none;
+    margin: 0.75rem 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .project-feature-list li {
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-weight: 300;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+    line-height: 1.5;
+  }
+
+  .project-feature-list li::before {
+    content: '▸';
+    color: var(--rust);
+    font-size: 0.65rem;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  .project-team {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 300;
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .project-team strong { color: var(--ink); font-weight: 500; }
+
+  /* ── ACHIEVEMENTS ── */
+  .achievements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--card-bg);
+  }
+
+  .achievement-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.25rem 1.75rem;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+
+  .achievement-item:last-child { border-bottom: none; }
+  .achievement-item:hover { background: rgba(196,89,42,0.04); }
+
+  .ach-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--rust-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .ach-title {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin-bottom: 0.15rem;
+  }
+
+  .ach-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .ach-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .edu-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--rust);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+    padding-top: 4px;
+  }
+
+  .edu-content h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.01em;
+  }
+
+  .edu-content p {
+    color: var(--muted);
+    font-size: 0.875rem;
+    font-weight: 300;
+  }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--rust);
+    text-align: center;
+    padding: 6rem 4rem;
+  }
+
+  .contact-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    color: var(--cream);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-heading em { font-style: italic; opacity: 0.7; }
+
+  .contact-sub {
+    color: rgba(245,240,232,0.7);
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(245,240,232,0.15);
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    border-radius: 2px;
+    border: 1px solid rgba(245,240,232,0.25);
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .contact-link:hover {
+    background: rgba(245,240,232,0.25);
+    transform: translateY(-2px);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(245,240,232,0.35);
+    text-align: center;
+    padding: 2rem 4rem;
+    font-size: 0.75rem;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    section { padding: 4rem 1.5rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 7rem 1.5rem 3rem; }
+    .hero-right { height: 300px; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .achievement-item { grid-template-columns: auto 1fr; }
+    .ach-date { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Anishka Verma</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#achievements">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding: 0;">
+  <div class="hero-left">
+    <div class="hero-tag">Full-Stack Developer &amp; Designer</div>
+    <h1 class="hero-name">Anishka<br><em>Verma</em></h1>
+    <p class="hero-desc">
+      Computer Science student at IIIT Kota, building real-time systems,
+      AI-powered platforms, and thoughtful digital experiences.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">See My Work</a>
+      <a href="mailto:anishkaverma046@gmail.com" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-graphic">
+      <div class="hero-circle">
+        <span class="hero-initials">AV</span>
+      </div>
+      <div class="floating-tag ft-1">React · Node.js · MongoDB</div>
+      <div class="floating-tag ft-2">MERN Stack Developer</div>
+      <div class="floating-tag ft-3">Top 200 / 80,000+</div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="about-grid reveal">
+    <div>
+      <h2 class="about-heading">Building things that <em style="font-family:'DM Serif Display',serif; font-style:italic; color:var(--rust);">matter</em></h2>
+      <p class="about-text">
+        I'm a second-year B.Tech student in Computer Science at IIIT Kota, passionate about
+        full-stack development, real-time applications, and AI integration. I love turning ideas
+        into polished, functional products.
+      </p>
+      <p class="about-text">
+        Beyond code, I'm a Google Talentsprint WE'24 Scholar, hackathon finalist, and active
+        member of my college's tech and arts communities. Leadership, problem-solving, and creative
+        expression are core to who I am.
+      </p>
+    </div>
+    <div>
+      <div class="info-card">
+        <div class="info-row">
+          <span class="info-label">Location</span>
+          <span class="info-value">Lucknow, India</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Degree</span>
+          <span class="info-value">B.Tech CSE</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Year</span>
+          <span class="info-value">2023 – 2027</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">College</span>
+          <span class="info-value">IIIT Kota</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Email</span>
+          <span class="info-value" style="color:var(--rust); font-size:0.8rem;">anishkaverma046@gmail.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section">
+  <div class="section-label">Skills</div>
+  <h2 class="skills-heading">Tools of the <em style="font-style:italic; opacity:0.6;">trade</em></h2>
+  <div class="skills-grid reveal">
+    <div class="skill-cell">
+      <div class="skill-category">Languages</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">C</span>
+        <span class="skill-tag">C++</span>
+        <span class="skill-tag">Java</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-category">Web</div>
+      <div class="skill-tags">
+        <span class="skill-tag">HTML</span>
+        <span class="skill-tag">CSS</span>
+        <span class="skill-tag">React.js</span>
+        <span class="skill-tag">TailwindCSS</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-category">Backend & DB</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">Express.js</span>
+        <span class="skill-tag">MongoDB</span>
+        <span class="skill-tag">Socket.io</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-category">Tools</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">GitHub</span>
+        <span class="skill-tag">Linux</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">LaTeX</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-category">Data Structures</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Arrays</span>
+        <span class="skill-tag">Trees</span>
+        <span class="skill-tag">Linked Lists</span>
+        <span class="skill-tag">Queues</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-category">Soft Skills</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Leadership</span>
+        <span class="skill-tag">Public Speaking</span>
+        <span class="skill-tag">Teamwork</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <h2 class="about-heading reveal" style="margin-bottom: 0.5rem;">Things I've <em style="font-family:'DM Serif Display',serif; font-style:italic; color:var(--rust);">built</em></h2>
+  <p class="about-text reveal" style="margin-bottom: 2.5rem; max-width: 560px;">Real products, built under pressure, for real impact — from 30-hour hackathons to semester-long builds.</p>
+
+  <div class="projects-grid">
+
+    <!-- BondSpace -->
+    <div class="project-card reveal">
+      <div class="project-badge">SheBuilds Hackathon 2025 · 30-Hour Sprint</div>
+      <div class="project-number">01 / Lead Developer — Team Huntrix</div>
+      <h3 class="project-title">BondSpace</h3>
+      <div class="project-role">AI-Powered Roommate Matching Platform</div>
+      <p class="project-desc">
+        A voice-driven MERN platform for women's co-living spaces — built to make finding the right roommate safe, transparent, and human. Uses explainable AI so users understand exactly why they were matched.
+      </p>
+      <ul class="project-feature-list">
+        <li>Voice-first micro-survey for deep compatibility insights via Omnidim.io</li>
+        <li>Transparent, bias-free AI matching engine with explainable results</li>
+        <li>Smart room allocation, real-time chat &amp; adaptive re-matching</li>
+        <li>Digital moodboard, interest wall &amp; expense tracker for bonding</li>
+        <li>Admin dashboard with full CRUD oversight</li>
+      </ul>
+      <div class="tech-stack">
+        <span class="tech-tag">React.js</span>
+        <span class="tech-tag">Node.js</span>
+        <span class="tech-tag">MongoDB</span>
+        <span class="tech-tag">Socket.io</span>
+        <span class="tech-tag">JWT</span>
+        <span class="tech-tag">Omnidim.io Voice AI</span>
+        <span class="tech-tag">TailwindCSS</span>
+        <span class="tech-tag">Express.js</span>
+      </div>
+      <div class="project-links-row">
+        <a href="https://lnkd.in/g-E6rEVr" class="project-link-btn live" target="_blank">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          Live Platform
+        </a>
+        <a href="https://lnkd.in/gzH_mpmS" class="project-link-btn" target="_blank">
+          <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+          GitHub Repo
+        </a>
+      </div>
+      <div class="project-team">
+        <strong>Team Huntrix</strong> &nbsp;·&nbsp; Anishka Verma (Lead) · Advika Tiwari · Swati Shah
+        &nbsp;·&nbsp; Sponsored by GitHub, OmniDimension, Plaksha University &amp; more
+      </div>
+    </div>
+
+    <!-- PawConnect -->
+    <div class="project-card reveal">
+      <div class="project-badge">Full-Stack Build · Lead Developer</div>
+      <div class="project-number">02 / Co-built with Archita Agrawal</div>
+      <h3 class="project-title">PawConnect</h3>
+      <div class="project-role">Animal Rescue & Adoption Ecosystem</div>
+      <p class="project-desc">
+        A real-time, multi-role rescue coordination platform bridging the gap between stray animals and forever homes. Citizens report, volunteers coordinate, adopters connect — all in one seamless ecosystem.
+      </p>
+      <ul class="project-feature-list">
+        <li>Citizens report distressed animals with photo + live pin drop</li>
+        <li>Volunteers get instant notifications; form rescue teams of up to 5 with live chat per case</li>
+        <li>Adoption portal where adopters connect directly with the rescuing volunteer</li>
+        <li>Admin dashboard with real-time rescue activity insights &amp; moderation controls</li>
+        <li>Maps powered by React Leaflet + OpenStreetMap/Nominatim</li>
+      </ul>
+      <div class="tech-stack">
+        <span class="tech-tag">React 19</span>
+        <span class="tech-tag">React Router v7</span>
+        <span class="tech-tag">Node.js</span>
+        <span class="tech-tag">Express 5</span>
+        <span class="tech-tag">MongoDB</span>
+        <span class="tech-tag">Socket.io</span>
+        <span class="tech-tag">JWT</span>
+        <span class="tech-tag">Cloudinary</span>
+        <span class="tech-tag">GSAP</span>
+        <span class="tech-tag">Chart.js</span>
+        <span class="tech-tag">React Leaflet</span>
+      </div>
+      <div class="project-links-row">
+        <a href="https://lnkd.in/gVNjy5xP" class="project-link-btn live" target="_blank">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          Live App
+        </a>
+        <a href="https://lnkd.in/g-bRTcpq" class="project-link-btn" target="_blank">
+          <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+          GitHub Repo
+        </a>
+      </div>
+      <div class="project-team">
+        <strong>Built with</strong> Archita Agrawal &nbsp;·&nbsp; Role: Full-stack, real-time chat integration, role-based auth, adoption workflow
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-label">Achievements</div>
+  <h2 class="about-heading reveal" style="margin-bottom: 2rem;">Recognition &amp; <em style="font-family:'DM Serif Display',serif; font-style:italic; color:var(--rust);">milestones</em></h2>
+  <div class="achievements-list reveal">
+    <div class="achievement-item">
+      <div class="ach-icon">🏆</div>
+      <div>
+        <div class="ach-title">Google Talentsprint WE'24 Scholar</div>
+        <div class="ach-desc">Top 200 of 80,000+ applicants — trained in Python, OOP, Git, and industry-ready skills</div>
+      </div>
+      <div class="ach-date">Feb 2024</div>
+    </div>
+    <div class="achievement-item">
+      <div class="ach-icon">🚀</div>
+      <div>
+        <div class="ach-title">Smart India Hackathon 2024 — Internal Finalist</div>
+        <div class="ach-desc">Healthcare solution for Ministry of AYUSH with a 6-member team</div>
+      </div>
+      <div class="ach-date">2024</div>
+    </div>
+    <div class="achievement-item">
+      <div class="ach-icon">⚡</div>
+      <div>
+        <div class="ach-title">Odoo Hackathon Finalist — IIT Gandhinagar</div>
+        <div class="ach-desc">Top 50 out of 850+ participants in a 24-hour coding challenge</div>
+      </div>
+      <div class="ach-date">Feb 2025</div>
+    </div>
+    <div class="achievement-item">
+      <div class="ach-icon">🥇</div>
+      <div>
+        <div class="ach-title">Innerve 9 Finalist — AIT Pune</div>
+        <div class="ach-desc">Top 20 teams from over 5,000 entries under logistics theme</div>
+      </div>
+      <div class="ach-date">2024</div>
+    </div>
+    <div class="achievement-item">
+      <div class="ach-icon">📊</div>
+      <div>
+        <div class="ach-title">Deloitte Australia Job Simulation — Forage</div>
+        <div class="ach-desc">Completed real-world analytics simulation with forecasting insights</div>
+      </div>
+      <div class="ach-date">2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" style="background: rgba(61,90,71,0.05); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="section-label">Education</div>
+  <div class="edu-grid reveal">
+    <div class="edu-card">
+      <div class="edu-year">2023 — 2027</div>
+      <div class="edu-content">
+        <h3>B.Tech in Computer Science & Engineering</h3>
+        <p>Indian Institute of Information Technology, Kota</p>
+        <p style="margin-top:0.5rem; color: var(--rust); font-size: 0.8rem; font-weight: 500;">Senior Executive — Techknow Society &nbsp;·&nbsp; Member — Fine Arts Club (Artive) &nbsp;·&nbsp; Performing Arts (Incognito)</p>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">2020 — 2022</div>
+      <div class="edu-content">
+        <h3>High School Diploma</h3>
+        <p>Lucknow Public Schools and Colleges, Lucknow</p>
+        <p style="margin-top:0.5rem; color: var(--muted); font-size: 0.8rem;">12th Grade (2022) &nbsp;·&nbsp; 10th Grade (2020)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact" style="padding: 6rem 4rem;">
+  <h2 class="contact-heading reveal">Let's build<br>something <em>together</em></h2>
+  <p class="contact-sub reveal">Open to internships, collaborations, and exciting projects.</p>
+  <div class="contact-links reveal">
+    <a href="mailto:anishkaverma046@gmail.com" class="contact-link">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      anishkaverma046@gmail.com
+    </a>
+    <a href="https://github.com/anishkaverma046" class="contact-link" target="_blank">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+      GitHub
+    </a>
+    <a href="https://www.linkedin.com" class="contact-link" target="_blank">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      LinkedIn
+    </a>
+    <a href="tel:+916392389930" class="contact-link">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+      +91 6392389930
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Anishka Verma &nbsp;·&nbsp; Designed &amp; built with care &nbsp;·&nbsp; Lucknow, India</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
